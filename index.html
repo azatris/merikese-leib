@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merikese Leib – Toortatrajahust juuretisega koduleib</title>
+<meta name="description" content="Toortatrajahust juuretisega kodune leib – retsept, tellimine, püsitellimus, juuretis ja leivateo õpitoad. Käsitööleib otse ahjust sinu lauale.">
+<link rel="canonical" href="https://leib.merimeel.ee/">
+<meta property="og:title" content="Merikese Leib – toortatrajahust juuretisega koduleib">
+<meta property="og:description" content="Käsitsi tehtud, pika kääritamisega gluteenivaba tatraleib. Telli leib ette või õpi seda ise tegema.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://leib.merimeel.ee/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍞</text></svg>">
+<style>
+  :root{
+    --pruun:#5c4632;
+    --tumepruun:#3e2f20;
+    --kreem:#faf5ec;
+    --kreem2:#f3ead9;
+    --oranz:#c47a3d;
+    --oranz-tume:#a8622b;
+    --roheline:#6b7d5a;
+    --hall:#8a7f70;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Georgia,'Times New Roman',serif;color:var(--tumepruun);background:var(--kreem);line-height:1.7;}
+  h1,h2,h3{font-weight:normal;line-height:1.25;}
+  h2{font-size:2rem;margin-bottom:.75rem;color:var(--pruun);}
+  h3{font-size:1.25rem;color:var(--oranz-tume);margin-bottom:.5rem;}
+  p{margin-bottom:1rem;}
+  a{color:var(--oranz-tume);}
+  section{padding:4rem 1.25rem;}
+  .kitsas{max-width:960px;margin:0 auto;}
+  .keskel{text-align:center;}
+  .alapealkiri{color:var(--hall);font-style:italic;margin-bottom:2rem;}
+
+  /* Navigatsioon */
+  nav{position:sticky;top:0;background:rgba(250,245,236,.97);border-bottom:1px solid #e3d8c3;z-index:50;padding:.6rem 1rem;}
+  .nav-sisu{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem;}
+  .logo{font-size:1.3rem;font-weight:bold;color:var(--pruun);text-decoration:none;letter-spacing:.5px;}
+  .logo span{color:var(--oranz);}
+  .nav-lingid{display:flex;flex-wrap:wrap;gap:.25rem;}
+  .nav-lingid a{text-decoration:none;color:var(--pruun);font-size:.9rem;padding:.35rem .6rem;border-radius:6px;}
+  .nav-lingid a:hover{background:var(--kreem2);}
+  .nav-lingid a.esile{background:var(--oranz);color:#fff;}
+  .nav-lingid a.esile:hover{background:var(--oranz-tume);}
+
+  /* Hero */
+  header.hero{background:linear-gradient(160deg,var(--kreem2) 0%,var(--kreem) 70%);text-align:center;padding:5rem 1.25rem 4rem;}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.4rem);color:var(--tumepruun);margin-bottom:1rem;}
+  .hero h1 em{color:var(--oranz);font-style:normal;}
+  .hero p.juht{font-size:1.15rem;max-width:640px;margin:0 auto 2rem;color:var(--pruun);}
+  .nupud{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;}
+  .nupp{display:inline-block;padding:.75rem 1.6rem;border-radius:30px;text-decoration:none;font-size:1rem;border:2px solid var(--oranz);}
+  .nupp.taidetud{background:var(--oranz);color:#fff;}
+  .nupp.taidetud:hover{background:var(--oranz-tume);border-color:var(--oranz-tume);}
+  .nupp.kontuur{color:var(--oranz-tume);}
+  .nupp.kontuur:hover{background:var(--kreem2);}
+
+  /* Fotokohatäide */
+  .foto{background:var(--kreem2);border:2px dashed #cbb997;border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--hall);font-size:.9rem;font-style:italic;padding:1rem;min-height:220px;}
+  .foto img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
+
+  /* Kaardid */
+  .ruudustik{display:grid;gap:1.5rem;}
+  .ruudustik.kolm{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+  .kaart{background:#fff;border:1px solid #eadfca;border-radius:14px;padding:1.75rem;box-shadow:0 2px 8px rgba(92,70,50,.06);}
+  .hind{font-size:1.6rem;color:var(--oranz-tume);margin:.5rem 0;}
+  .hind small{font-size:.9rem;color:var(--hall);}
+  .kaart ul{margin:0 0 1rem 1.2rem;}
+  .kaart li{margin-bottom:.3rem;}
+
+  /* Retsept */
+  #retsept{background:#fff;}
+  .retsept-veerud{display:grid;grid-template-columns:1fr 1.6fr;gap:2.5rem;align-items:start;}
+  @media(max-width:760px){.retsept-veerud{grid-template-columns:1fr;}}
+  .koostis{background:var(--kreem);border-radius:14px;padding:1.5rem;border:1px solid #eadfca;}
+  .koostis ul{list-style:none;}
+  .koostis li{padding:.4rem 0;border-bottom:1px dotted #d8c9ab;}
+  .koostis li:last-child{border-bottom:none;}
+  ol.sammud{counter-reset:samm;list-style:none;}
+  ol.sammud li{counter-increment:samm;position:relative;padding:0 0 1.4rem 3.2rem;}
+  ol.sammud li::before{content:counter(samm);position:absolute;left:0;top:0;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--oranz);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;}
+  .vihje{background:var(--kreem2);border-left:4px solid var(--roheline);padding:1rem 1.25rem;border-radius:0 10px 10px 0;margin-top:1.5rem;font-size:.95rem;}
+
+  /* Vormid */
+  #tellimine{background:var(--kreem2);}
+  form{background:#fff;border-radius:14px;padding:2rem;border:1px solid #eadfca;max-width:640px;margin:0 auto;}
+  label{display:block;margin:1rem 0 .3rem;font-size:.95rem;color:var(--pruun);}
+  input,select,textarea{width:100%;padding:.65rem .8rem;border:1px solid #d8c9ab;border-radius:8px;font-family:inherit;font-size:1rem;background:var(--kreem);}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--oranz);border-color:var(--oranz);}
+  .rida{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  @media(max-width:560px){.rida{grid-template-columns:1fr;}}
+  button{margin-top:1.5rem;width:100%;padding:.9rem;border:none;border-radius:30px;background:var(--oranz);color:#fff;font-size:1.05rem;font-family:inherit;cursor:pointer;}
+  button:hover{background:var(--oranz-tume);}
+  .varu{display:none;margin-top:1.25rem;padding:1rem 1.25rem;border:1px solid #e6d9c4;border-radius:12px;background:#fffaf0;text-align:left;}
+  .varu.nahtav{display:block;}
+  .varu pre{white-space:pre-wrap;font:inherit;font-size:.9rem;margin:.75rem 0;color:var(--tumepruun);}
+  .varu button{margin-top:0;}
+  .vorm-info{font-size:.85rem;color:var(--hall);margin-top:.75rem;text-align:center;}
+
+  /* Jalus */
+  footer{background:var(--tumepruun);color:#e8ddc9;padding:3rem 1.25rem;text-align:center;}
+  footer a{color:#f0c896;}
+  footer .logo{color:#fff;font-size:1.4rem;}
+  .margid{display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;margin:1.25rem 0;font-size:.95rem;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-sisu">
+    <a class="logo" href="#avaleht">Merikese <span>Leib</span></a>
+    <div class="nav-lingid">
+      <a href="#retsept">Retsept</a>
+      <a href="#leivad">Leivad</a>
+      <a href="#juuretis">Juuretis</a>
+      <a href="#pysitellimus">Püsitellimus</a>
+      <a href="#opituba">Õpituba</a>
+      <a class="esile" href="#tellimine">Telli</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="avaleht">
+  <h1>Toortatrajahust juuretisega <em>koduleib</em></h1>
+  <p class="juht">Käsitsi tehtud, pika kääritamisega ja täiesti gluteenivaba. Küpsetan igal nädalal väikeses koguses – telli oma leib ette või õpi seda ise tegema.</p>
+  <div class="nupud">
+    <a class="nupp taidetud" href="#tellimine">Telli leib</a>
+    <a class="nupp kontuur" href="#retsept">Vaata retsepti</a>
+  </div>
+</header>
+
+<section id="tutvustus">
+  <div class="kitsas">
+    <div class="ruudustik kolm">
+      <div class="kaart keskel">
+        <h3>🌾 Puhas koostis</h3>
+        <p>Ainult toortatrajahu, vesi, juuretis ja sool. Ei mingit pärmi, lisaaineid ega säilitusaineid.</p>
+      </div>
+      <div class="kaart keskel">
+        <h3>⏳ Pikk kääritamine</h3>
+        <p>Juuretis kääritab tainast 8–12 tundi. See annab leivale sügava maitse ja teeb ta kergesti seeditavaks.</p>
+      </div>
+      <div class="kaart keskel">
+        <h3>🏡 Kodune küpsetus</h3>
+        <p>Iga leib on küpsetatud minu enda köögis, väikestes kogustes ja hoole ning armastusega.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="retsept">
+  <div class="kitsas">
+    <h2>Toortatraleiva retsept</h2>
+    <p class="alapealkiri">Nii sünnib minu leib – proovi julgesti ka ise kodus!</p>
+    <div class="retsept-veerud">
+      <div class="koostis">
+        <h3>Koostisosad (1 suur leib)</h3>
+        <ul>
+          <li>500 g toortatrajahu</li>
+          <li>550 ml toasooja vett</li>
+          <li>150 g aktiivset tatrajuuretist</li>
+          <li>10–12 g meresoola</li>
+          <li>Soovi korral: 2 sl seemneid (päevalill, kõrvits, lina)</li>
+        </ul>
+        <h3 style="margin-top:1.5rem;">Vajalikud vahendid</h3>
+        <ul>
+          <li>Kauss ja spaatel</li>
+          <li>Leivavorm (u 1,5 l)</li>
+          <li>Köögirätik või kaas</li>
+        </ul>
+      </div>
+      <div>
+        <ol class="sammud">
+          <li><strong>Sega tainas.</strong> Sega kausis jahu, vesi, juuretis ja sool ühtlaseks paksuks tainaks. Tatratainas on püdelam kui nisutainas – nii peabki.</li>
+          <li><strong>Eelkergita.</strong> Kata kauss rätikuga ja jäta toatemperatuurile 8–12 tunniks (nt ööseks). Tainas peab muutuma käärivalt mullitavaks, õhuliseks ja kergelt hapuka lõhnaga.</li>
+          <li><strong>Vormi.</strong> Tõsta tainas õlitatud või küpsetuspaberiga kaetud vormi, silu pind märja käega ja puista soovi korral peale seemneid.</li>
+          <li><strong>Kergita ahjus.</strong> Kui paned taigna vormi, siis pane samal ajal ahi sooja u 50–70 kraadi ja seejärel vormid ahju kerkima 45–60 min.</li>
+          <li><strong>Küpseta.</strong> Kuumuta ahi 220 °C-ni. Küpseta 15 minutit, seejärel alanda 200 °C-le ja küpseta veel 45–50 minutit, kuni koorik on tumepruun.</li>
+          <li><strong>Jahuta.</strong> Väga oluline samm! Lase leival rätiku või silikoonkatte all täielikult jahtuda (vähemalt 1 h, ideaalis kuni täieliku jahtumiseni) – alles siis on sisu küps ja lõigatav.</li>
+        </ol>
+        <div class="vihje">
+          💡 <strong>Vihje:</strong> juuretise saad teha ise tatrajahust ja veest umbes nädalaga – või osta minult valmis elus juuretis vaid 1 € eest. Vaata allpool!
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="galerii" hidden>
+  <div class="kitsas">
+    <h2 class="keskel">Minu leivad</h2>
+    <p class="alapealkiri keskel">Pildid räägivad rohkem kui tuhat sõna</p>
+    <div class="ruudustik kolm">
+      <!-- FOTO LISAMINE: pane pildifail selle HTML-failiga samasse kausta ja asenda
+           allolev <div class="foto">...</div> reaga:
+           <div class="foto"><img src="minu-leib-1.jpg" alt="Toortatraleib"></div> -->
+      <div class="foto">Foto koht nr 1<br>nt terve leib laual</div>
+      <div class="foto">Foto koht nr 2<br>nt lõigatud leib – sisu</div>
+      <div class="foto">Foto koht nr 3<br>nt leivad ahjust tulemas</div>
+      <div class="foto">Foto koht nr 4<br>nt juuretis purgis</div>
+      <div class="foto">Foto koht nr 5<br>nt õpituba/leivategu</div>
+      <div class="foto">Foto koht nr 6<br>nt Merike köögis</div>
+    </div>
+  </div>
+</section>
+
+<section id="leivad" style="background:#fff;">
+  <div class="kitsas">
+    <h2 class="keskel">Hinnad ja tooted</h2>
+    <p class="alapealkiri keskel">Kõik leivad küpsetatud tellimise peale – alati värsked</p>
+    <div class="ruudustik kolm">
+      <div class="kaart">
+        <h3>Suur leib</h3>
+        <p class="hind">7 € <small>/ u 1,2 kg</small></p>
+        <p>Toortatrajahust juuretisega leib. Jätkub suuremale perele mitmeks päevaks. Säilib rätiku sees 5–7 päeva.</p>
+        <a class="nupp taidetud" href="#tellimine" onclick="valiToode('Suur leib (1,2 kg) – 7 €')">Telli</a>
+      </div>
+      <div class="kaart">
+        <h3>Väike leib</h3>
+        <p class="hind">4 € <small>/ 600 g</small></p>
+        <p>Sama leib, väiksemas mõõdus. Hea proovimiseks või väiksemale perele.</p>
+        <a class="nupp taidetud" href="#tellimine" onclick="valiToode('Väike leib (600 g) – 4 €')">Telli</a>
+      </div>
+      <div class="kaart" id="juuretis">
+        <h3>Tatrajuuretis</h3>
+        <p class="hind">1 € <small>/ purk</small></p>
+        <p>Elus ja aktiivne tatrajuuretis koos hooldusjuhendiga. Sellega saad kohe ise leivateoga alustada.</p>
+        <a class="nupp taidetud" href="#tellimine" onclick="valiToode('Tatrajuuretis – 1 €')">Telli</a>
+      </div>
+      <div class="kaart">
+        <h3>Kohaletoimetamine või pakiautomaati 🚚</h3>
+        <p class="hind">4 € <small>/ saadetis</small></p>
+        <p>Tallinna piires leiva kohaletoimetamine või pakiautomaadiga saatmine. Lisa soov tellimuse märkustesse.</p>
+      </div>
+    </div>
+
+    <div class="ruudustik" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:1.5rem;">
+      <div class="kaart" id="pysitellimus">
+        <h3>Püsitellimus 🗓️</h3>
+        <p class="hind">25 € <small>/ kuu</small></p>
+        <ul>
+          <li>4 suurt leiba kuus (1 leib nädalas)</li>
+          <li>Kokkuhoid 3 € kuus</li>
+          <li>Sinu leib on alati broneeritud</li>
+          <li>Saad igal ajal lõpetada</li>
+        </ul>
+        <a class="nupp taidetud" href="#tellimine" onclick="valiToode('Püsitellimus (4 leiba kuus) – 25 €/kuu')">Alusta püsitellimust</a>
+      </div>
+      <div class="kaart" id="opituba">
+        <h3>Leivateo õpituba 👩‍🍳</h3>
+        <p class="hind">90 € <small>/ õpituba (kuni 4 inimest)</small></p>
+        <ul>
+          <li>4 tundi praktilist leivategu</li>
+          <li>Juuretise tegemine ja hooldus</li>
+          <li>Igaüks küpsetab oma leiva</li>
+          <li>Juuretis ja retseptid koju kaasa</li>
+        </ul>
+        <a class="nupp taidetud" href="#tellimine" onclick="valiToode('Leivateo õpituba (4 h, kuni 4 in) – 90 €')">Broneeri õpituba</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tellimine">
+  <div class="kitsas">
+    <h2 class="keskel">Tellimine ja ettetellimine</h2>
+    <p class="alapealkiri keskel">Täida vorm – tellimus jõuab otse minu postkasti ja võtan sinuga ühendust</p>
+    <form id="tellimusvorm">
+      <label for="toode">Mida soovid tellida?</label>
+      <select id="toode" required>
+        <option value="">– vali toode või teenus –</option>
+        <option>Suur leib (1,2 kg) – 7 €</option>
+        <option>Väike leib (600 g) – 4 €</option>
+        <option>Tatrajuuretis – 1 €</option>
+        <option>Püsitellimus (4 leiba kuus) – 25 €/kuu</option>
+        <option>Leivateo õpituba (4 h, kuni 4 in) – 90 €</option>
+      </select>
+
+      <div class="rida">
+        <div>
+          <label for="kogus">Kogus</label>
+          <input type="number" id="kogus" min="1" value="1" required>
+        </div>
+        <div>
+          <label for="kuupaev">Soovitud kuupäev (ettetellimine)</label>
+          <input type="date" id="kuupaev">
+        </div>
+      </div>
+
+      <div class="rida">
+        <div>
+          <label for="nimi">Sinu nimi</label>
+          <input type="text" id="nimi" required>
+        </div>
+        <div>
+          <label for="telefon">Telefon</label>
+          <input type="tel" id="telefon" required>
+        </div>
+      </div>
+
+      <label for="epost">Sinu e-post</label>
+      <input type="email" id="epost" required>
+
+      <label for="markused">Märkused (nt seemnetega/seemneteta, kättesaamise soov, allergiad)</label>
+      <textarea id="markused" rows="3"></textarea>
+
+      <button type="submit">Saada tellimus 🍞</button>
+      <p class="vorm-info">Vorm avab sinu e-posti rakenduse valmis kirjaga. Maksmine toimub kokkuleppel kättesaamisel või ülekandega.</p>
+      <div class="varu" id="varu" aria-live="polite">
+        <strong>Kui e-posti rakendus ei avanenud</strong>
+        <p style="margin:.5rem 0 0;">Kopeeri tellimus ja saada see aadressile <a href="mailto:merike.taza@gmail.com">merike.taza@gmail.com</a>.</p>
+        <pre id="varu-tekst"></pre>
+        <button type="button" id="varu-kopeeri">Kopeeri tellimus</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <a class="logo" href="#avaleht">Merikese <span style="color:#f0c896;">Leib</span></a>
+  <div class="margid">
+    <span>🌾 100% toortatar</span>
+    <span>🚫 Gluteenivaba</span>
+    <span>🧡 Käsitöö</span>
+  </div>
+  <p>Küsimused ja tellimused: <a href="mailto:merike.taza@gmail.com">merike.taza@gmail.com</a></p>
+  <p style="font-size:.85rem;opacity:.7;">© 2026 Merikese Leib. Kõik õigused kaitstud.</p>
+</footer>
+
+<script>
+function valiToode(nimi){
+  var v = document.getElementById('toode');
+  for (var i = 0; i < v.options.length; i++){
+    if (v.options[i].text === nimi){ v.selectedIndex = i; break; }
+  }
+}
+document.getElementById('tellimusvorm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var toode = document.getElementById('toode').value;
+  var kogus = document.getElementById('kogus').value;
+  var kuupaev = document.getElementById('kuupaev').value;
+  var nimi = document.getElementById('nimi').value;
+  var telefon = document.getElementById('telefon').value;
+  var epost = document.getElementById('epost').value;
+  var markused = document.getElementById('markused').value;
+
+  var teema = 'Tellimus: ' + toode + ' – ' + nimi;
+  var sisu = 'Tere, Merike!\n\nSoovin esitada tellimuse.\n\n' +
+    'Toode: ' + toode + '\n' +
+    'Kogus: ' + kogus + '\n' +
+    (kuupaev ? 'Soovitud kuupäev: ' + kuupaev + '\n' : '') +
+    'Nimi: ' + nimi + '\n' +
+    'Telefon: ' + telefon + '\n' +
+    'E-post: ' + epost + '\n' +
+    (markused ? 'Märkused: ' + markused + '\n' : '') +
+    '\nParimate soovidega\n' + nimi;
+
+  document.getElementById('varu-tekst').textContent = teema + '\n\n' + sisu;
+  document.getElementById('varu').classList.add('nahtav');
+  window.location.href = 'mailto:merike.taza@gmail.com' +
+    '?subject=' + encodeURIComponent(teema) +
+    '&body=' + encodeURIComponent(sisu);
+});
+document.getElementById('varu-kopeeri').addEventListener('click', function(){
+  var t = document.getElementById('varu-tekst').textContent, b = this;
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function(){
+    b.textContent = 'Kopeeritud';
+  }, function(){
+    var r = document.createRange(); r.selectNodeContents(document.getElementById('varu-tekst'));
+    var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    b.textContent = 'Tekst on valitud, kopeeri';
+  });
+});
+</script>
+
+</body>
+</html>
