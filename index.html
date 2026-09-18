@@ -7,7 +7,7 @@
 <meta name="description" content="Toortatrajahust juuretisega kodune leib – retsept, tellimine, püsitellimus, juuretis ja leivateo õpitoad. Käsitööleib otse ahjust sinu lauale.">
 <link rel="canonical" href="https://leib.merimeel.ee/">
 <meta property="og:title" content="Merikese Leib – toortatrajahust juuretisega koduleib">
-<meta property="og:description" content="Käsitsi tehtud, pika kääritamisega gluteenivaba tatraleib. Telli leib ette või õpi seda ise tegema.">
+<meta property="og:description" content="Käsitsi tehtud, pika kääritamisega leib gluteenivabast toortatrajahust. Telli leib ette või õpi seda ise tegema.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://leib.merimeel.ee/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍞</text></svg>">
@@ -24,6 +24,9 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  section,header.hero{scroll-margin-top:4.5rem;}
+  a:focus-visible,button:focus-visible,.nupp:focus-visible{outline:3px solid var(--tumepruun);outline-offset:3px;}
   body{font-family:Georgia,'Times New Roman',serif;color:var(--tumepruun);background:var(--kreem);line-height:1.7;}
   h1,h2,h3{font-weight:normal;line-height:1.25;}
   h2{font-size:2rem;margin-bottom:.75rem;color:var(--pruun);}
@@ -34,6 +37,7 @@
   .kitsas{max-width:960px;margin:0 auto;}
   .keskel{text-align:center;}
   .alapealkiri{color:var(--hall);font-style:italic;margin-bottom:2rem;}
+  .alapealkiri + .markus{margin-top:-1rem;}
 
   /* Navigatsioon */
   nav{position:sticky;top:0;background:rgba(250,245,236,.97);border-bottom:1px solid #e3d8c3;z-index:50;padding:.6rem 1rem;}
@@ -43,18 +47,19 @@
   .nav-lingid{display:flex;flex-wrap:wrap;gap:.25rem;}
   .nav-lingid a{text-decoration:none;color:var(--pruun);font-size:.9rem;padding:.35rem .6rem;border-radius:6px;}
   .nav-lingid a:hover{background:var(--kreem2);}
-  .nav-lingid a.esile{background:var(--oranz);color:#fff;}
-  .nav-lingid a.esile:hover{background:var(--oranz-tume);}
+  @media(max-width:700px){.nav-sisu{flex-wrap:nowrap;gap:.75rem;}.nav-lingid{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}.nav-lingid::-webkit-scrollbar{display:none;}.nav-lingid a{white-space:nowrap;}.nav-lingid a.esile{order:-1;}.logo{white-space:nowrap;font-size:1.1rem;}}
+  .nav-lingid a.esile{background:var(--oranz-tume);color:#fff;}
+  .nav-lingid a.esile:hover{background:#8f5223;}
 
   /* Hero */
-  header.hero{background:linear-gradient(160deg,var(--kreem2) 0%,var(--kreem) 70%);text-align:center;padding:5rem 1.25rem 4rem;}
+  header.hero{background:var(--kreem2);border-bottom:1px solid #e3d8c3;text-align:center;padding:5rem 1.25rem 4rem;}
   .hero h1{font-size:clamp(2.2rem,5vw,3.4rem);color:var(--tumepruun);margin-bottom:1rem;}
   .hero h1 em{color:var(--oranz);font-style:normal;}
   .hero p.juht{font-size:1.15rem;max-width:640px;margin:0 auto 2rem;color:var(--pruun);}
   .nupud{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;}
   .nupp{display:inline-block;padding:.75rem 1.6rem;border-radius:30px;text-decoration:none;font-size:1rem;border:2px solid var(--oranz);}
-  .nupp.taidetud{background:var(--oranz);color:#fff;}
-  .nupp.taidetud:hover{background:var(--oranz-tume);border-color:var(--oranz-tume);}
+  .nupp.taidetud{background:var(--oranz-tume);border-color:var(--oranz-tume);color:#fff;}
+  .nupp.taidetud:hover{background:#8f5223;border-color:#8f5223;}
   .nupp.kontuur{color:var(--oranz-tume);}
   .nupp.kontuur:hover{background:var(--kreem2);}
 
@@ -65,7 +70,10 @@
   /* Kaardid */
   .ruudustik{display:grid;gap:1.5rem;}
   .ruudustik.kolm{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
-  .kaart{background:#fff;border:1px solid #eadfca;border-radius:14px;padding:1.75rem;box-shadow:0 2px 8px rgba(92,70,50,.06);}
+  .ruudustik.neli{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+  .ruudustik.neli .kaart{display:flex;flex-direction:column;padding:1.5rem;}
+  .ruudustik.neli .kaart .nupp{margin-top:auto;align-self:flex-start;}
+  .kaart{background:#fff;border:1px solid #eadfca;border-radius:14px;padding:1.75rem;}
   .hind{font-size:1.6rem;color:var(--oranz-tume);margin:.5rem 0;}
   .hind small{font-size:.9rem;color:var(--hall);}
   .kaart ul{margin:0 0 1rem 1.2rem;}
@@ -81,8 +89,15 @@
   .koostis li:last-child{border-bottom:none;}
   ol.sammud{counter-reset:samm;list-style:none;}
   ol.sammud li{counter-increment:samm;position:relative;padding:0 0 1.4rem 3.2rem;}
-  ol.sammud li::before{content:counter(samm);position:absolute;left:0;top:0;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--oranz);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;}
-  .vihje{background:var(--kreem2);border-left:4px solid var(--roheline);padding:1rem 1.25rem;border-radius:0 10px 10px 0;margin-top:1.5rem;font-size:.95rem;}
+  ol.sammud li::before{content:counter(samm);position:absolute;left:0;top:0;width:2.2rem;height:2.2rem;border-radius:50%;background:var(--oranz-tume);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;}
+  .vihje{border-top:1px solid #d8c9ab;padding:1rem 0 0;margin-top:1.75rem;font-size:.95rem;}
+  .silt{display:block;font-family:ui-monospace,Menlo,monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--roheline);margin-bottom:.35rem;}
+  .omadused{gap:0;}
+  .omadus{padding:.25rem 1.75rem;border-left:1px solid #e3d8c3;}
+  .omadus:first-child{border-left:none;padding-left:0;}
+  .omadus p{margin-bottom:0;}
+  @media(max-width:820px){.omadus{border-left:none;border-top:1px solid #e3d8c3;padding:1.25rem 0;}.omadus:first-child{border-top:none;padding-top:0;}}
+  .markus{max-width:640px;margin:0 auto 2rem;font-size:.95rem;color:var(--pruun);}
 
   /* Vormid */
   #tellimine{background:var(--kreem2);}
@@ -92,8 +107,8 @@
   input:focus,select:focus,textarea:focus{outline:2px solid var(--oranz);border-color:var(--oranz);}
   .rida{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
   @media(max-width:560px){.rida{grid-template-columns:1fr;}}
-  button{margin-top:1.5rem;width:100%;padding:.9rem;border:none;border-radius:30px;background:var(--oranz);color:#fff;font-size:1.05rem;font-family:inherit;cursor:pointer;}
-  button:hover{background:var(--oranz-tume);}
+  button{margin-top:1.5rem;width:100%;padding:.9rem;border:none;border-radius:30px;background:var(--oranz-tume);color:#fff;font-size:1.05rem;font-family:inherit;cursor:pointer;}
+  button:hover{background:#8f5223;}
   .varu{display:none;margin-top:1.25rem;padding:1rem 1.25rem;border:1px solid #e6d9c4;border-radius:12px;background:#fffaf0;text-align:left;}
   .varu.nahtav{display:block;}
   .varu pre{white-space:pre-wrap;font:inherit;font-size:.9rem;margin:.75rem 0;color:var(--tumepruun);}
@@ -125,7 +140,7 @@
 
 <header class="hero" id="avaleht">
   <h1>Toortatrajahust juuretisega <em>koduleib</em></h1>
-  <p class="juht">Käsitsi tehtud, pika kääritamisega ja täiesti gluteenivaba. Küpsetan igal nädalal väikeses koguses – telli oma leib ette või õpi seda ise tegema.</p>
+  <p class="juht">Käsitsi tehtud, pika kääritamisega, ainult gluteenivabast toortatrajahust. Nisu, rukist ega otra selles leivas ei ole. Küpsetan igal nädalal väikeses koguses – telli oma leib ette või õpi seda ise tegema.</p>
   <div class="nupud">
     <a class="nupp taidetud" href="#tellimine">Telli leib</a>
     <a class="nupp kontuur" href="#retsept">Vaata retsepti</a>
@@ -134,17 +149,17 @@
 
 <section id="tutvustus">
   <div class="kitsas">
-    <div class="ruudustik kolm">
-      <div class="kaart keskel">
-        <h3>🌾 Puhas koostis</h3>
+    <div class="ruudustik kolm omadused">
+      <div class="omadus">
+        <h3>Puhas koostis</h3>
         <p>Ainult toortatrajahu, vesi, juuretis ja sool. Ei mingit pärmi, lisaaineid ega säilitusaineid.</p>
       </div>
-      <div class="kaart keskel">
-        <h3>⏳ Pikk kääritamine</h3>
+      <div class="omadus">
+        <h3>Pikk kääritamine</h3>
         <p>Juuretis kääritab tainast 8–12 tundi. See annab leivale sügava maitse ja teeb ta kergesti seeditavaks.</p>
       </div>
-      <div class="kaart keskel">
-        <h3>🏡 Kodune küpsetus</h3>
+      <div class="omadus">
+        <h3>Kodune küpsetus</h3>
         <p>Iga leib on küpsetatud minu enda köögis, väikestes kogustes ja hoole ning armastusega.</p>
       </div>
     </div>
@@ -182,7 +197,7 @@
           <li><strong>Jahuta.</strong> Väga oluline samm! Lase leival rätiku või silikoonkatte all täielikult jahtuda (vähemalt 1 h, ideaalis kuni täieliku jahtumiseni) – alles siis on sisu küps ja lõigatav.</li>
         </ol>
         <div class="vihje">
-          💡 <strong>Vihje:</strong> juuretise saad teha ise tatrajahust ja veest umbes nädalaga – või osta minult valmis elus juuretis vaid 1 € eest. Vaata allpool!
+          <span class="silt">Vihje</span>Juuretise saad teha ise tatrajahust ja veest umbes nädalaga – või osta minult valmis elus juuretis vaid 1 € eest. Vaata allpool!
         </div>
       </div>
     </div>
@@ -211,7 +226,8 @@
   <div class="kitsas">
     <h2 class="keskel">Hinnad ja tooted</h2>
     <p class="alapealkiri keskel">Kõik leivad küpsetatud tellimise peale – alati värsked</p>
-    <div class="ruudustik kolm">
+    <p class="markus keskel">Tatar on looduslikult gluteenivaba ja minu leivas muud jahu ei ole. Küpsetan koduköögis ega lase leiba laboris testida, seega tsöliaakia korral räägi minuga enne tellimist.</p>
+    <div class="ruudustik neli">
       <div class="kaart">
         <h3>Suur leib</h3>
         <p class="hind">7 € <small>/ u 1,2 kg</small></p>
@@ -231,7 +247,7 @@
         <a class="nupp taidetud" href="#tellimine" onclick="valiToode('Tatrajuuretis – 1 €')">Telli</a>
       </div>
       <div class="kaart">
-        <h3>Kohaletoimetamine või pakiautomaati 🚚</h3>
+        <h3>Kohaletoimetamine või pakiautomaati</h3>
         <p class="hind">4 € <small>/ saadetis</small></p>
         <p>Tallinna piires leiva kohaletoimetamine või pakiautomaadiga saatmine. Lisa soov tellimuse märkustesse.</p>
       </div>
@@ -239,7 +255,7 @@
 
     <div class="ruudustik" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:1.5rem;">
       <div class="kaart" id="pysitellimus">
-        <h3>Püsitellimus 🗓️</h3>
+        <h3>Püsitellimus</h3>
         <p class="hind">25 € <small>/ kuu</small></p>
         <ul>
           <li>4 suurt leiba kuus (1 leib nädalas)</li>
@@ -250,7 +266,7 @@
         <a class="nupp taidetud" href="#tellimine" onclick="valiToode('Püsitellimus (4 leiba kuus) – 25 €/kuu')">Alusta püsitellimust</a>
       </div>
       <div class="kaart" id="opituba">
-        <h3>Leivateo õpituba 👩‍🍳</h3>
+        <h3>Leivateo õpituba</h3>
         <p class="hind">90 € <small>/ õpituba (kuni 4 inimest)</small></p>
         <ul>
           <li>4 tundi praktilist leivategu</li>
@@ -307,7 +323,7 @@
       <label for="markused">Märkused (nt seemnetega/seemneteta, kättesaamise soov, allergiad)</label>
       <textarea id="markused" rows="3"></textarea>
 
-      <button type="submit">Saada tellimus 🍞</button>
+      <button type="submit">Saada tellimus</button>
       <p class="vorm-info">Vorm avab sinu e-posti rakenduse valmis kirjaga. Maksmine toimub kokkuleppel kättesaamisel või ülekandega.</p>
       <div class="varu" id="varu" aria-live="polite">
         <strong>Kui e-posti rakendus ei avanenud</strong>
@@ -322,9 +338,9 @@
 <footer>
   <a class="logo" href="#avaleht">Merikese <span style="color:#f0c896;">Leib</span></a>
   <div class="margid">
-    <span>🌾 100% toortatar</span>
-    <span>🚫 Gluteenivaba</span>
-    <span>🧡 Käsitöö</span>
+    <span>100% toortatar</span>
+    <span>Gluteenivabast jahust</span>
+    <span>Käsitöö</span>
   </div>
   <p>Küsimused ja tellimused: <a href="mailto:merike.taza@gmail.com">merike.taza@gmail.com</a></p>
   <p style="font-size:.85rem;opacity:.7;">© 2026 Merikese Leib. Kõik õigused kaitstud.</p>
