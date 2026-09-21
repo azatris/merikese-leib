@@ -118,6 +118,7 @@
   @media(max-width:560px){.rida{grid-template-columns:1fr;}}
   button{margin-top:1.5rem;width:100%;padding:.9rem;border:none;border-radius:30px;background:var(--oranz-tume);color:#fff;font-size:1.05rem;font-family:inherit;cursor:pointer;}
   button:hover{background:#8f5223;}
+  .saadetud{margin-top:1.25rem;padding:1rem 1.25rem;border:1px solid var(--roheline);border-radius:12px;color:var(--tumepruun);background:#f4f7ef;text-align:center;}
   .varu{display:none;margin-top:1.25rem;padding:1rem 1.25rem;border:1px solid #e6d9c4;border-radius:12px;background:#fffaf0;text-align:left;}
   .varu.nahtav{display:block;}
   .varu pre{white-space:pre-wrap;font:inherit;font-size:.9rem;margin:.75rem 0;color:var(--tumepruun);}
@@ -310,7 +311,8 @@
   <div class="kitsas">
     <h2 class="keskel">Tellimine ja ettetellimine</h2>
     <p class="alapealkiri keskel">Täida vorm – tellimus jõuab otse minu postkasti ja võtan sinuga ühendust</p>
-    <form id="tellimusvorm">
+    <form id="tellimusvorm" data-voti="">
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
       <label for="toode">Mida soovid tellida?</label>
       <select id="toode" required>
         <option value="">– vali toode või teenus –</option>
@@ -350,7 +352,8 @@
       <textarea id="markused" rows="3"></textarea>
 
       <button type="submit">Saada tellimus</button>
-      <p class="vorm-info">Vorm avab sinu e-posti rakenduse valmis kirjaga. Maksmine toimub kokkuleppel kättesaamisel või ülekandega.</p>
+      <p class="vorm-info" id="vorm-info">Vorm avab sinu e-posti rakenduse valmis kirjaga. Maksmine toimub kokkuleppel kättesaamisel või ülekandega.</p>
+      <p class="saadetud" id="saadetud" tabindex="-1" hidden>Aitäh! Tellimus on saadetud. Võtan Sinuga peagi ühendust.</p>
       <div class="varu" id="varu" aria-live="polite">
         <strong>Kui e-posti rakendus ei avanenud</strong>
         <p style="margin:.5rem 0 0;">Kopeeri tellimus ja saada see aadressile <a href="mailto:merike.taza@gmail.com">merike.taza@gmail.com</a>.</p>
@@ -400,12 +403,42 @@ document.getElementById('tellimusvorm').addEventListener('submit', function(e){
     (markused ? 'Märkused: ' + markused + '\n' : '') +
     '\nParimate soovidega\n' + nimi;
 
-  document.getElementById('varu-tekst').textContent = teema + '\n\n' + sisu;
-  document.getElementById('varu').classList.add('nahtav');
-  window.location.href = 'mailto:merike.taza@gmail.com' +
-    '?subject=' + encodeURIComponent(teema) +
-    '&body=' + encodeURIComponent(sisu);
+  function varuvariant(){
+    document.getElementById('varu-tekst').textContent = teema + '\n\n' + sisu;
+    document.getElementById('varu').classList.add('nahtav');
+    window.location.href = 'mailto:merike.taza@gmail.com' +
+      '?subject=' + encodeURIComponent(teema) +
+      '&body=' + encodeURIComponent(sisu);
+  }
+
+  var vorm = this, nupp = vorm.querySelector('button[type=submit]');
+  var voti = vorm.getAttribute('data-voti');
+  if (!voti || vorm.querySelector('[name=botcheck]').checked){ varuvariant(); return; }
+
+  nupp.disabled = true; nupp.textContent = 'Saadan…';
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    body: JSON.stringify({
+      access_key: voti, subject: teema, from_name: 'Merikese Leib', replyto: epost,
+      Toode: toode, Kogus: kogus, 'Soovitud kuupäev': kuupaev || '-', Nimi: nimi,
+      Telefon: telefon, 'E-post': epost, 'Märkused': markused || '-'
+    })
+  }).then(function(r){ return r.json(); }).then(function(v){
+    if (!v.success) throw new Error(v.message || 'viga');
+    vorm.reset();
+    document.getElementById('varu').classList.remove('nahtav');
+    var ok = document.getElementById('saadetud');
+    ok.hidden = false; ok.focus();
+    nupp.disabled = false; nupp.textContent = 'Saada tellimus';
+  }).catch(function(){
+    nupp.disabled = false; nupp.textContent = 'Saada tellimus';
+    varuvariant();
+  });
 });
+if (document.getElementById('tellimusvorm').getAttribute('data-voti')){
+  document.getElementById('vorm-info').textContent = 'Tellimus jõuab otse minu postkasti ja võtan Sinuga ühendust. Maksmine toimub kokkuleppel kättesaamisel või ülekandega.';
+}
 document.getElementById('varu-kopeeri').addEventListener('click', function(){
   var t = document.getElementById('varu-tekst').textContent, b = this;
   (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function(){
